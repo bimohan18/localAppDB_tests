@@ -1,0 +1,10 @@
+#your_project/
+#├── tests/
+#│   ├── conftest.py
+#│   ├── test_read_customer.py
+#│   └── utils.py
+#├── requirements.txt
+#└── pytest.ini
+pytest
+requests
+pytest-flask
