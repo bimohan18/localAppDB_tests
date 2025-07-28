@@ -1,5 +1,24 @@
 import pytest
 import requests
+import json
+
+@pytest.fixture(scope="module")
+def customer_payloads():
+    with open("data/testdata_createCustomer.json") as f:
+        return json.load(f)
+
+@pytest.mark.fieldcheck
+def test_missing_first_name_field(base_url, headers, customer_payloads):
+    payload = customer_payloads["invalid"]["missing_first_name"]
+    res = requests.post(f"{base_url}/createCustomer", json=payload, headers=headers)
+    assert res.status_code == 400
+    assert "name.first" in str(res.json()["details"])
+
+@pytest.mark.smoke
+def test_valid_customer_payload(base_url, headers, customer_payloads):
+    payload = customer_payloads["valid"]["customer_A"]
+    res = requests.post(f"{base_url}/createCustomer", json=payload, headers=headers)
+    assert res.status_code == 201
 
 # ✅ Smoke Test – Quick Success Path
 @pytest.mark.smoke

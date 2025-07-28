@@ -1,0 +1,41 @@
+{
+    "valid": {
+        "customer_A": {
+            "name": { "first": "Indira", "middle": "K", "last": "Singh" },
+            "type": "Personal",
+            "document": { "id": "123456789", "type": "SSN" },
+            "address": {
+                "line1": "101 First Street",
+                "line2": "Suite 500",
+                "line3": "",
+                "city": "East Providence",
+                "zip": "02914",
+                "state": "RI",
+                "country": "USA"
+            },
+            "email": "indira@co.io",
+            "phone": 1234567890,
+            "account": { "type": "CHECKING", "routing": "123456789" }
+        }
+    },
+    "invalid": {
+        "missing_first_name": {
+            "name": { "last": "Singh" },
+            "type": "Personal",
+            "document": { "id": "123456789", "type": "SSN" },
+            "address": { "line1": "101 Main", "city": "Testville", "zip": "12345", "state": "CA", "country": "USA" },
+            "email": "indira@co.io",
+            "phone": 1234567890,
+            "account": { "type": "CHECKING", "routing": "123456789" }
+        },
+        "bad_email_format": {
+            "name": { "first": "Indira", "last": "Singh" },
+            "type": "Personal",
+            "document": { "id": "123456789", "type": "SSN" },
+            "address": { "line1": "101 Main", "city": "Testville", "zip": "12345", "state": "CA", "country": "USA" },
+            "email": "indira[at]co.io",
+            "phone": 1234567890,
+            "account": { "type": "CHECKING", "routing": "123456789" }
+        }
+    }
+}
